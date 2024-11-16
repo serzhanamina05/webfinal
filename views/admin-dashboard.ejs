@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portfolio</title>
+</head>
+<body>
+  <h1>Admin Portfolio</h1>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <h3><%= item.title %></h3>
+        <p><%= item.description %></p>
+        <div>
+          <% item.images.forEach(image => { %>
+            <img src="<%= image %>" alt="Image" />
+          <% }) %>
+        </div>
+        <form action="/admin/portfolio/update/<%= item._id %>" method="POST">
+          <button type="submit">Update</button>
+        </form>
+        <form action="/admin/portfolio/delete/<%= item._id %>" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/admin/portfolio/create">Create New Portfolio Item</a>
+</body>
+</html>

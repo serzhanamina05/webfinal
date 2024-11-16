@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enable 2FA</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 36px;
+      color: #444;
+    }
+    .container {
+      display: inline-block;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 400px;
+      text-align: left;
+    }
+    .qr-code {
+      margin: 20px 0;
+    }
+    .instructions {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Enable Two-Factor Authentication</h1>
+
+  <div class="container">
+    <div class="instructions">
+      <p>To enhance your account security, please scan the QR code below using your authenticator app.</p>
+      <p>Once you've scanned the code, enter the 6-digit code from your app to confirm.</p>
+    </div>
+    
+    <div class="qr-code">
+      <img src="<%= qrCodeUrl %>" alt="QR Code" width="200" />
+    </div>
+    
+    <form action="/user/enable-2fa" method="POST">
+      <label for="twoFactorCode">Enter the 6-digit code from your authenticator app:</label><br>
+      <input type="text" name="twoFactorCode" id="twoFactorCode" required maxlength="6" pattern="\d{6}" title="6-digit code" /><br><br>
+      <button type="submit">Enable 2FA</button>
+    </form>
+
+    <div class="footer">
+      <p>Having trouble? <a href="/help">Get Help</a></p>
+    </div>
+  </div>
+</body>
+</html>

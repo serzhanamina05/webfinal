@@ -1,0 +1,167 @@
+/* Основные стили для body */
+body {
+  font-family: 'Georgia', serif;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('path/to/your/background-image.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Заголовок */
+header {
+  background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Контейнер для контента */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+/* Основной блок с контентом */
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Блок с информацией */
+.stock-info {
+  flex: 0.35;
+  background-color: #2d2d2d;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+.stock-info:hover {
+  transform: translateY(-10px); /* Легкий эффект при наведении */
+}
+
+.stock-info h2 {
+  color: #e0b0a0;
+  font-size: 1.5rem;
+  margin-top: 0;
+  font-family: 'Georgia', serif;
+}
+
+.stock-info p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.stock-info strong {
+  color: #f0f0f0;
+}
+
+/* Стили для графика */
+.chart {
+  flex: 0.6;
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.chart-container {
+  margin-top: 20px;
+}
+
+/* Стили для списка новостей */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #3c3c3c;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+li:hover {
+  transform: translateY(-5px);
+}
+
+h3 {
+  color: #e0b0a0;
+  font-size: 1.4rem;
+  margin: 0;
+  font-family: 'Georgia', serif;
+}
+
+p {
+  font-size: 1rem;
+  color: #d0d0d0;
+  margin-top: 5px;
+}
+
+a {
+  color: #b78b50;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #f0c0a0;
+}
+
+/* Стиль для кнопок */
+button {
+  background-color: #b78b50;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0b0a0;
+}
+
+/* Стилизация для маленьких экранов */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .stock-info, .chart {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  header {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Dashboard</title>
+  <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+  <h1>Top News</h1>
+  <ul>
+    <% newsData.forEach(article => { %>
+      <li>
+        <h3><%= article.title %></h3>
+        <p><%= article.description %></p>
+        <a href="<%= article.url %>">Read More</a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

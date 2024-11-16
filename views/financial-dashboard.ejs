@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Data Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .chart {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .stock-info {
+      flex: 0.3;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .stock-info h2 {
+      margin-top: 0;
+    }
+
+    .chart-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Financial Data Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <div class="dashboard">
+    
+      <div class="stock-info">
+        <h2>Stock Information</h2>
+        <p><strong>Symbol:</strong> AAPL</p>
+        <p><strong>Latest Price:</strong> $<%= latestPrice %></p>
+        <p><strong>Change:</strong> <%= latestPrice === 'N/A' ? 'Data Unavailable' : 'Positive' %></p>
+      </div>
+
+   
+      <div class="chart">
+        <h2>Stock Price History</h2>
+        <div class="chart-container">
+          <canvas id="stockChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const stockData = <%- JSON.stringify(stockData) %>;
+
+    if (stockData) {
+      const labels = Object.keys(stockData).reverse(); 
+      const values = labels.map(date => stockData[date]['4. close']); 
+
+      const ctx = document.getElementById('stockChart').getContext('2d');
+      const stockChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'AAPL Stock Price',
+            data: values,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: true,
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { title: { display: true, text: 'Date' }},
+            y: { title: { display: true, text: 'Price (USD)' }}
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
